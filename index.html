@@ -136,16 +136,16 @@ tr:hover{background:#f5f8fc}
 <!-- 二、三、四、五 — Tab 切换区域 -->
 <div class="main-tabs">
   <div class="main-tab-nav">
-    <button class="main-tab-btn active" data-tab="tab-ratio" onclick="switchTab(this,'tab-ratio')">二、特批比例看板 <span class="badge">2026年1月至今累计</span></button>
+    <button class="main-tab-btn active" data-tab="tab-ratio" onclick="switchTab(this,'tab-ratio')">二、特批比例看板</button>
     <button class="main-tab-btn" data-tab="tab-monthly" onclick="switchTab(this,'tab-monthly')">三、各BU月度特批情况</button>
-    <button class="main-tab-btn" data-tab="tab-recruiter" onclick="switchTab(this,'tab-recruiter')">四、招聘专员特批情况看板 <span class="badge orange">2026年1月至今累计</span></button>
+    <button class="main-tab-btn" data-tab="tab-recruiter" onclick="switchTab(this,'tab-recruiter')">四、招聘专员特批情况看板</button>
     <button class="main-tab-btn" data-tab="tab-position" onclick="switchTab(this,'tab-position')">五、职位维度与年龄特批理由分析</button>
   </div>
 
   <!-- Tab 2: 特批比例看板 -->
   <div id="tab-ratio" class="main-tab-content active">
     <div class="card-title">
-      BU及部门特批分布 <span class="badge">三层结构展示</span>
+      BU及部门特批分布 <span class="badge">三层结构展示</span> <span class="badge">2026年1月至今累计</span>
       <div class="toggle-group" id="chart1Toggle">
         <button class="toggle-btn active" data-level="bu">BU层面</button>
         <button class="toggle-btn" data-level="dept">下设一级部门</button>
@@ -172,8 +172,7 @@ tr:hover{background:#f5f8fc}
   <!-- Tab 4: 招聘专员特批情况 -->
   <div id="tab-recruiter" class="main-tab-content">
     <div class="card-title">
-      招聘专员特批情况看板
-      <span class="badge orange">2026年1月至今累计</span>
+      招聘专员特批情况看板 <span class="badge orange">2026年1月至今累计</span>
     </div>
     <div class="slicer" id="recSlicer">
       <button class="slicer-btn active" data-bu="" onclick="filterRecSlicer(this)">全部</button>
