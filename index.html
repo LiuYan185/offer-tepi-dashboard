@@ -723,33 +723,33 @@ function renderCh1(level){
         if(dbl>0) tip += '<br/><span style="color:#ff5722">⚠ 含'+dbl+'人双特批</span>';
         return tip;
       }},
-      legend:{data:['正常Offer','一级特批','二级特批'],top:0,textStyle:{fontSize:12}},
-      grid:{left:'3%',right:'4%',bottom:'12%',top:'18%',containLabel:true},
+      legend:{data:['正常Offer','一级特批','二级特批','特批率'],top:0,textStyle:{fontSize:12}},
+      grid:{left:'3%',right:'4%',bottom:'12%',top:'22%',containLabel:true},
       xAxis:{type:'category',data:cats,axisLabel:{fontSize:10,fontWeight:'500',rotate:cats.length>10?20:0,interval:0,formatter:v=>v||'│'}},
       yAxis:{type:'value',name:'Offer数',splitLine:{lineStyle:{color:'#f0f2f5',type:'dashed'}}},
       series:[
         {name:'正常Offer',type:'bar',stack:'a',barWidth:'45%',
-          data:l1s.map((v,i)=>v==='-'?{value:0,itemStyle:{color:'transparent'}}:ofs[i]-l1s[i]-l2s[i]),
+          data:l1s.map((v,i)=>ofs[i]-l1s[i]-l2s[i]),
           itemStyle:{color:'#66bb6a',borderRadius:[0,0,4,4]}},
         {name:'一级特批',type:'bar',stack:'a',
-          data:l1s.map(v=>v==='-'?{value:0,itemStyle:{color:'transparent'}}:v),
+          data:l1s.map(v=>v),
           itemStyle:{color:'#e53935'}},
         {name:'二级特批',type:'bar',stack:'a',
-          data:l2s.map(v=>v==='-'?{value:0,itemStyle:{color:'transparent'}}:v),
-          itemStyle:{color:'#1976d2',borderRadius:[0,0,6,6]},
+          data:l2s.map(v=>v),
+          itemStyle:{color:'#1976d2',borderRadius:[0,0,6,6]}},
+        {name:'特批率',type:'line',
+          data:rawDepts.map(d=>+d.rate.toFixed(1)),
+          symbol:'diamond',symbolSize:10,lineStyle:{color:'#ffd93d',width:2},itemStyle:{color:'#ffd93d',borderColor:'#fff',borderWidth:2},
           label:{
             show:true, position:'top',
             formatter:function(p){
-              const i = p.dataIndex;
-              if(l1s[i]==='-') return '';
-              const total = ofs[i]; if(total===0) return '';
-              const l1v = (l1s[i]==='-')?0:l1s[i];
-              const l2v = (l2s[i]==='-')?0:l2s[i];
-              return ((l1v+l2v)/total*100).toFixed(1)+'%';
+              return p.value+'%';
             },
             fontSize:10, fontWeight:'700', color:'#e65100',
             backgroundColor:'rgba(255,255,255,0.85)', padding:[2,6], borderRadius:4
-          }}
+          },
+          yAxisIndex:0
+        }
       ]
     },true);
   }
